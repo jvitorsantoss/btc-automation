@@ -3,6 +3,20 @@ import json
 
 
 import websocket
+import bitstamp.client
+
+#def client():
+    #trading.client = bitstamp.client.Trading(username='', key='', secret='') #user config
+
+
+#def comprar(quantidade):
+    #trading_client = cliente()
+    #trading_client.buy_market_order(quantidade)
+                                                                #nao vai funcionar pois tem que logar no site e ter saldo para fazer transaçoes
+
+#def vender(quantidade):
+    #trading_client = cliente()
+    #trading_client.sell_market_order(quantidade)
 
 
 def ao_abrir(ws):
