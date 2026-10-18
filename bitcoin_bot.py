@@ -1,21 +1,34 @@
 import ssl
+import json
+
 
 import websocket
 
 
 def ao_abrir(ws):
     print("[+] abriu a conexao...")
+    json_subscribe = """
+{
+    "event": "bts:subscribe",
+    "data": {
+        "channel": "live_trades_btcusd"
+    }
+} 
+"""
+    ws.send(json_subscribe)
+
 
 def ao_fechar(ws):
     print("[+] fechou a conexao")
 
 def erro(ws, erro):
-    print("[+] erro") 
-    print(erro) 
+    print("[+] erro", erro)  
 
 def ao_receber_mensagem(ws,message):
-    print(message)
-
+    message = json.loads(message)
+    if message['event'] == 'trade':
+        price = message['data']['price']
+        print(price)
 
 if __name__ == "__main__":
     ws = websocket.WebSocketApp("wss://ws.bitstamp.net.",
